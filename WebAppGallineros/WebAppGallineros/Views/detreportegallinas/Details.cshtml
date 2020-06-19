@@ -1,0 +1,43 @@
+﻿@model WebAppGallineros.Entities.detreportegallinas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutIn.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>detreportegallinas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.gallinas.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gallinas.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reporte.Folio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reporte.Folio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusgallina.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusgallina.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

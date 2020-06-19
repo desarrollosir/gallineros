@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebAppGallineros.Entities.produccion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIn.cshtml";
+}
+
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Produccion Diaria</h2>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <a href="@Url.Action("NuevaProduccion")" class="btn btn-primary">Crear Nuevo</a>
+                </p>
+                <table class="table table-bordered table-striped" id="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Folio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.granjeros.Nombre)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model.OrderByDescending(x => x.id))
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Folio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fecha)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.granjeros.Nombre)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Continuar", "ContinuarProduccion", new { _idproduccion = item.id }) |
+                                @Html.ActionLink("Detalles", "DetalleProduccion", new { produccionid = item.id }) |
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+@section Scripts{
+
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+    </script>
+}

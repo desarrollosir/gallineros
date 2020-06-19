@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="be71dddcdb99470980f5346f7342f6fc" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.AspNetRoles" Width="1.5" PointX="2.5" PointY="12.125" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.AspNetUsers" Width="1.5" PointX="0.5" PointY="12.125" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.detproducciongallineros" Width="1.5" PointX="0.5" PointY="3.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.gallineros" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.granjas" Width="1.5" PointX="2.75" PointY="3.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.granjeros" Width="1.5" PointX="0.5" PointY="8.875" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.produccion" Width="1.5" PointX="0.5" PointY="6" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.reporte" Width="1.5" PointX="4.5" PointY="8.875" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.statusgallina" Width="1.5" PointX="7" PointY="12.25" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.granjeros_aspnetusers_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detproducciongallineros_gallineros_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detproducciongallineros_produccion_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.granjeros_granjas_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.produccion_granjeros_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.reporte_granjeros_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.detgallinasgallineros" Width="1.5" PointX="5.375" PointY="0.625" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.detreportegallinas" Width="1.5" PointX="7.125" PointY="9.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.gallinas" Width="1.5" PointX="7" PointY="6.375" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallinas_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallineros_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_granjas_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_statusgallina_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk" />
+        <AssociationConnector Association="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

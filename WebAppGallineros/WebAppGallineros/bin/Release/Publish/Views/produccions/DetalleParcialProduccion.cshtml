@@ -1,0 +1,25 @@
+﻿@model List<WebAppGallineros.Entities.detproduccion>
+
+<div class="content-center">
+    <table id="table" class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center">Gallina</th>
+                <th class="text-center">Gallinero</th>
+                <th class="text-center">Produccion</th>
+                <th class="text-center">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">@item.gallinas.Nombre</td>
+                    <td class="text-center">@item.gallineros.codigo</td>
+                    <td class="text-center">@item.Produccion</td>
+                    <td class="text-center">@item.statusgallinas.descripcion</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

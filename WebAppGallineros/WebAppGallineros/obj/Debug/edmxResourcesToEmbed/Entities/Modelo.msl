@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_A3F19C_gallinerosModelStoreContainer" CdmEntityContainer="DB_A3F19C_gallinerosEntities">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detproducciongallineros">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.detproducciongallineros">
+        <MappingFragment StoreEntitySet="detproducciongallineros">
+          <ScalarProperty Name="cantidadhuevos" ColumnName="cantidadhuevos" />
+          <ScalarProperty Name="Gallineros_Id" ColumnName="Gallineros_Id" />
+          <ScalarProperty Name="Produccion_Id" ColumnName="Produccion_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gallineros">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.gallineros">
+        <MappingFragment StoreEntitySet="gallineros">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="granjas">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.granjas">
+        <MappingFragment StoreEntitySet="granjas">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nomenclatura" ColumnName="nomenclatura" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="granjeros">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.granjeros">
+        <MappingFragment StoreEntitySet="granjeros">
+          <ScalarProperty Name="AspNetUsers_Id" ColumnName="AspNetUsers_Id" />
+          <ScalarProperty Name="Granjas_Id" ColumnName="Granjas_Id" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produccion">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.produccion">
+        <MappingFragment StoreEntitySet="produccion">
+          <ScalarProperty Name="Granjeros_Id" ColumnName="Granjeros_Id" />
+          <ScalarProperty Name="Folio" ColumnName="Folio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reporte">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.reporte">
+        <MappingFragment StoreEntitySet="reporte">
+          <ScalarProperty Name="Granjeros_Id" ColumnName="Granjeros_Id" />
+          <ScalarProperty Name="Folio" ColumnName="Folio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statusgallina">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.statusgallina">
+        <MappingFragment StoreEntitySet="statusgallina">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="DB_A3F19C_gallinerosModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="detgallinasgallineros">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.detgallinasgallineros">
+        <MappingFragment StoreEntitySet="detgallinasgallineros">
+          <ScalarProperty Name="StatusGallina_Id" ColumnName="StatusGallina_Id" />
+          <ScalarProperty Name="Granjas_Id" ColumnName="Granjas_Id" />
+          <ScalarProperty Name="Gallineros_Id" ColumnName="Gallineros_Id" />
+          <ScalarProperty Name="Gallinas_Id" ColumnName="Gallinas_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detreportegallinas">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.detreportegallinas">
+        <MappingFragment StoreEntitySet="detreportegallinas">
+          <ScalarProperty Name="reporte_id" ColumnName="reporte_id" />
+          <ScalarProperty Name="statusgallina_id" ColumnName="statusgallina_id" />
+          <ScalarProperty Name="gallinas_id" ColumnName="gallinas_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gallinas">
+      <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.gallinas">
+        <MappingFragment StoreEntitySet="gallinas">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

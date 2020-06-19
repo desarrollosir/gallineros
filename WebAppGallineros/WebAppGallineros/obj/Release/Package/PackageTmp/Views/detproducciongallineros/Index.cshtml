@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebAppGallineros.Entities.detproducciongallineros>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIn.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadhuevos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gallineros.codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.produccion.Folio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadhuevos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gallineros.codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.produccion.Folio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

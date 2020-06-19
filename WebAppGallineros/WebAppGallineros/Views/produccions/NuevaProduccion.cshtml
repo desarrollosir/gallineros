@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "NuevaProduccion";
+    Layout = "~/Views/Shared/_LayoutIn.cshtml";
+}
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Nueva Produccion</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Folio</label>                
+                <input id="folio" type="text" class="form-control" value="@ViewBag.Folio" disabled/>
+            </div>
+            <div class="form-group">
+                <label>Fecha</label>
+                <input id="granja" type="text" class="form-control" value="@ViewBag.Fecha" disabled />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Granja</label>                
+                <input id="granja" type="text" class="form-control" value="@ViewBag.Granja" disabled/>
+            </div>
+            <div class="form-group">
+                <label>Granjero</label>                
+                <input id="granjero" type="text" class="form-control" value="@ViewBag.Granjero" disabled/>
+            </div>                
+        </div>
+        <br />
+        <a class="btn btn-default" href="@Url.Action("Index")">Regresar</a>
+    </div>
+</div>
+
+<div>  
+    <div class="form-group row">
+        <label class="col-sm-1">Gallinero</label>
+        <div class="col-sm-10">
+            <input id="gallinero" type="text" class="form-control" value="@ViewBag.Gallinero">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-1">Produccion</label>
+        <div class="col-sm-10">
+            <input type="radio" id="0" name="qty" value="0">
+            <label for="1">0</label>
+            <input type="radio" id="1" name="qty" value="1">
+            <label for="1">1</label>
+            <input type="radio" id="2" name="qty" value="2">
+            <label for="2">2</label>
+            <input type="radio" id="3" name="qty" value="3" checked>
+            <label for="3">3</label>
+            <input type="radio" id="4" name="qty" value="4">
+            <label for="4">4</label>
+        </div>
+    </div>
+
+    <button id="Guardar" onclick="Guardar()" type="button" class="btn btn-success">Guardar</button>
+</div>
+
+<link href="~/Content/toastr.css" rel="stylesheet" />
+
+@section Scripts{
+
+    <script src="~/Scripts/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        function Guardar() {
+
+            var gallinero = $('#gallinero').val();
+            $('#Guardar').attr("disabled", true);
+
+            if (gallinero === "NO HAY MAS GALLINEROS") {
+                toastr.error(gallinero);
+                $('#Guardar').attr("disabled", false);
+            }
+            else {
+
+                var granja = $('#granja').val();
+                var granjero = $('#granjero').text();
+                var gallinero = $('#gallinero').val();
+                var opciones = document.getElementsByName('qty');
+                var folio = $('#folio').val();
+                var valor_qty;
+
+                for (var i = 0; i < opciones.length; i++) {
+                    if (opciones[i].checked) {
+                        valor_qty = opciones[i].value;
+                    }
+                }
+
+                var data = JSON.stringify({
+                    granja: granja,
+                    granjero: granjero,
+                    gallinero: gallinero,
+                    qty: valor_qty,
+                    folio: folio
+                });
+
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: "/produccions/GuardarProduccion",
+                    data: data,
+                    success: function (result, status, xhr) {
+                        if (result.respuesta === true) {
+                            $('#gallinero').val(result.gallinero);
+                            $('#folio').val(result.folior);
+                            $("[name=qty]").filter("[value='3']").prop("checked", true);                            
+                            toastr.success('OK.');
+                            $('#Guardar').attr("disabled", false);
+                        }
+                    },
+                    error: function (xhr, status, error) { 
+                        $('#Guardar').attr("disabled", false);
+                        toastr.error('HA OCURRIDO UN ERROR.');
+                    }
+                });
+            }
+
+        }
+    </script>
+}

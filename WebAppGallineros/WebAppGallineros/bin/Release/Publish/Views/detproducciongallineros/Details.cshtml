@@ -1,0 +1,43 @@
+﻿@model WebAppGallineros.Entities.detproducciongallineros
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutIn.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>detproducciongallineros</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadhuevos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadhuevos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gallineros.codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gallineros.codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.produccion.Folio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.produccion.Folio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

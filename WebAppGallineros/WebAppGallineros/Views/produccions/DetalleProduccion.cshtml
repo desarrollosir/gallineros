@@ -1,0 +1,58 @@
+﻿@model List<WebAppGallineros.Entities.detproducciongallineros>
+<br />
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Informacion de Produccion</h3>
+        
+    </div>
+    <div class="panel-body">
+        <div class="form form-inline form-multiline">
+            <div class="form-group">
+                <label>Folio</label>
+                <input type="text" class="form-control" disabled value="@ViewBag.Folio">
+            </div>
+            <div class="form-group">
+                <label>Fecha</label>
+                <input type="text" class="form-control" disabled value="@ViewBag.Fecha">
+            </div>
+            <div class="form-group">
+                <label>Granjero</label>
+                <input type="text" class="form-control" disabled value="@ViewBag.Granjero">
+            </div>
+            <div class="form-group">
+                <label>Granja</label>
+                <input type="text" class="form-control" disabled value="@ViewBag.Granja">
+            </div>
+            <br /><br />
+            <a href="@Url.Action("Index")" class="btn btn-default">Regresar</a>            
+        </div>        
+    </div>
+</div>
+
+<h3>
+    <span class="label label-primary">Produccion Total &nbsp;<span class="badge"> @Model.Sum(x => x.cantidadhuevos)</span></span>
+    &nbsp;
+    
+</h3>
+
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Gallinero</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderByDescending(x => x.Gallineros_Id))
+        {
+            <tr>
+                <td>@item.gallineros.codigo</td>
+                <td>@item.cantidadhuevos</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

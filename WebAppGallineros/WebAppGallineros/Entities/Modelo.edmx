@@ -1,0 +1,913 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A3F19C_gallinerosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="detgallinasgallineros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gallinas_Id" Type="int" Nullable="false" />
+          <Property Name="Gallineros_Id" Type="int" Nullable="false" />
+          <Property Name="Granjas_Id" Type="int" Nullable="false" />
+          <Property Name="StatusGallina_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="detproducciongallineros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Produccion_Id" Type="int" Nullable="false" />
+          <Property Name="Gallineros_Id" Type="int" Nullable="false" />
+          <Property Name="cantidadhuevos" Type="int" />
+        </EntityType>
+        <EntityType Name="detreportegallinas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gallinas_id" Type="int" Nullable="false" />
+          <Property Name="statusgallina_id" Type="int" Nullable="false" />
+          <Property Name="reporte_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gallinas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="gallineros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="granjas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomenclatura" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="granjeros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="100" />
+          <Property Name="Granjas_Id" Type="int" Nullable="false" />
+          <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="produccion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Folio" Type="varchar" MaxLength="10" />
+          <Property Name="Granjeros_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reporte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Folio" Type="varchar" MaxLength="10" />
+          <Property Name="Granjeros_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statusgallina">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="detgallinasgallineros_gallinas_fk">
+          <End Role="gallinas" Type="Self.gallinas" Multiplicity="1" />
+          <End Role="detgallinasgallineros" Type="Self.detgallinasgallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gallinas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detgallinasgallineros">
+              <PropertyRef Name="Gallinas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detgallinasgallineros_gallineros_fk">
+          <End Role="gallineros" Type="Self.gallineros" Multiplicity="1" />
+          <End Role="detgallinasgallineros" Type="Self.detgallinasgallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gallineros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detgallinasgallineros">
+              <PropertyRef Name="Gallineros_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detgallinasgallineros_granjas_fk">
+          <End Role="granjas" Type="Self.granjas" Multiplicity="1" />
+          <End Role="detgallinasgallineros" Type="Self.detgallinasgallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="granjas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detgallinasgallineros">
+              <PropertyRef Name="Granjas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detgallinasgallineros_statusgallina_fk">
+          <End Role="statusgallina" Type="Self.statusgallina" Multiplicity="1" />
+          <End Role="detgallinasgallineros" Type="Self.detgallinasgallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusgallina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detgallinasgallineros">
+              <PropertyRef Name="StatusGallina_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detproducciongallineros_gallineros_fk">
+          <End Role="gallineros" Type="Self.gallineros" Multiplicity="1" />
+          <End Role="detproducciongallineros" Type="Self.detproducciongallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gallineros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detproducciongallineros">
+              <PropertyRef Name="Gallineros_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detproducciongallineros_produccion_fk">
+          <End Role="produccion" Type="Self.produccion" Multiplicity="1" />
+          <End Role="detproducciongallineros" Type="Self.detproducciongallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produccion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detproducciongallineros">
+              <PropertyRef Name="Produccion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detreportegallinas_gallinas_fk">
+          <End Role="gallinas" Type="Self.gallinas" Multiplicity="1" />
+          <End Role="detreportegallinas" Type="Self.detreportegallinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gallinas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detreportegallinas">
+              <PropertyRef Name="gallinas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detreportegallinas_reporte_fk">
+          <End Role="reporte" Type="Self.reporte" Multiplicity="1" />
+          <End Role="detreportegallinas" Type="Self.detreportegallinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reporte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detreportegallinas">
+              <PropertyRef Name="reporte_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detreportegallinas_statusgallina_fk">
+          <End Role="statusgallina" Type="Self.statusgallina" Multiplicity="1" />
+          <End Role="detreportegallinas" Type="Self.detreportegallinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusgallina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detreportegallinas">
+              <PropertyRef Name="statusgallina_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="granjeros_aspnetusers_fk">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="granjeros" Type="Self.granjeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="granjeros">
+              <PropertyRef Name="AspNetUsers_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="granjeros_granjas_fk">
+          <End Role="granjas" Type="Self.granjas" Multiplicity="1" />
+          <End Role="granjeros" Type="Self.granjeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="granjas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="granjeros">
+              <PropertyRef Name="Granjas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="produccion_granjeros_fk">
+          <End Role="granjeros" Type="Self.granjeros" Multiplicity="1" />
+          <End Role="produccion" Type="Self.produccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="granjeros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produccion">
+              <PropertyRef Name="Granjeros_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_granjeros_fk">
+          <End Role="granjeros" Type="Self.granjeros" Multiplicity="1" />
+          <End Role="reporte" Type="Self.reporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="granjeros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reporte">
+              <PropertyRef Name="Granjeros_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A3F19C_gallinerosModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detgallinasgallineros" EntityType="Self.detgallinasgallineros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detproducciongallineros" EntityType="Self.detproducciongallineros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detreportegallinas" EntityType="Self.detreportegallinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gallinas" EntityType="Self.gallinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gallineros" EntityType="Self.gallineros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="granjas" EntityType="Self.granjas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="granjeros" EntityType="Self.granjeros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="produccion" EntityType="Self.produccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reporte" EntityType="Self.reporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statusgallina" EntityType="Self.statusgallina" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="detgallinasgallineros_gallinas_fk" Association="Self.detgallinasgallineros_gallinas_fk">
+            <End Role="gallinas" EntitySet="gallinas" />
+            <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detgallinasgallineros_gallineros_fk" Association="Self.detgallinasgallineros_gallineros_fk">
+            <End Role="gallineros" EntitySet="gallineros" />
+            <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detgallinasgallineros_granjas_fk" Association="Self.detgallinasgallineros_granjas_fk">
+            <End Role="granjas" EntitySet="granjas" />
+            <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detgallinasgallineros_statusgallina_fk" Association="Self.detgallinasgallineros_statusgallina_fk">
+            <End Role="statusgallina" EntitySet="statusgallina" />
+            <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detproducciongallineros_gallineros_fk" Association="Self.detproducciongallineros_gallineros_fk">
+            <End Role="gallineros" EntitySet="gallineros" />
+            <End Role="detproducciongallineros" EntitySet="detproducciongallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detproducciongallineros_produccion_fk" Association="Self.detproducciongallineros_produccion_fk">
+            <End Role="produccion" EntitySet="produccion" />
+            <End Role="detproducciongallineros" EntitySet="detproducciongallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detreportegallinas_gallinas_fk" Association="Self.detreportegallinas_gallinas_fk">
+            <End Role="gallinas" EntitySet="gallinas" />
+            <End Role="detreportegallinas" EntitySet="detreportegallinas" />
+          </AssociationSet>
+          <AssociationSet Name="detreportegallinas_reporte_fk" Association="Self.detreportegallinas_reporte_fk">
+            <End Role="reporte" EntitySet="reporte" />
+            <End Role="detreportegallinas" EntitySet="detreportegallinas" />
+          </AssociationSet>
+          <AssociationSet Name="detreportegallinas_statusgallina_fk" Association="Self.detreportegallinas_statusgallina_fk">
+            <End Role="statusgallina" EntitySet="statusgallina" />
+            <End Role="detreportegallinas" EntitySet="detreportegallinas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="granjeros_aspnetusers_fk" Association="Self.granjeros_aspnetusers_fk">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="granjeros" EntitySet="granjeros" />
+          </AssociationSet>
+          <AssociationSet Name="granjeros_granjas_fk" Association="Self.granjeros_granjas_fk">
+            <End Role="granjas" EntitySet="granjas" />
+            <End Role="granjeros" EntitySet="granjeros" />
+          </AssociationSet>
+          <AssociationSet Name="produccion_granjeros_fk" Association="Self.produccion_granjeros_fk">
+            <End Role="granjeros" EntitySet="granjeros" />
+            <End Role="produccion" EntitySet="produccion" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_granjeros_fk" Association="Self.reporte_granjeros_fk">
+            <End Role="granjeros" EntitySet="granjeros" />
+            <End Role="reporte" EntitySet="reporte" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A3F19C_gallinerosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_A3F19C_gallinerosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="DB_A3F19C_gallinerosModel.AspNetRoles" />
+          <EntitySet Name="AspNetUsers" EntityType="DB_A3F19C_gallinerosModel.AspNetUsers" />
+          <EntitySet Name="detproducciongallineros" EntityType="DB_A3F19C_gallinerosModel.detproducciongallineros" />
+          <EntitySet Name="gallineros" EntityType="DB_A3F19C_gallinerosModel.gallineros" />
+          <EntitySet Name="granjas" EntityType="DB_A3F19C_gallinerosModel.granjas" />
+          <EntitySet Name="granjeros" EntityType="DB_A3F19C_gallinerosModel.granjeros" />
+          <EntitySet Name="produccion" EntityType="DB_A3F19C_gallinerosModel.produccion" />
+          <EntitySet Name="reporte" EntityType="DB_A3F19C_gallinerosModel.reporte" />
+          <EntitySet Name="statusgallina" EntityType="DB_A3F19C_gallinerosModel.statusgallina" />
+          <AssociationSet Name="granjeros_aspnetusers_fk" Association="DB_A3F19C_gallinerosModel.granjeros_aspnetusers_fk">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="granjeros" EntitySet="granjeros" />
+          </AssociationSet>
+          <AssociationSet Name="detproducciongallineros_gallineros_fk" Association="DB_A3F19C_gallinerosModel.detproducciongallineros_gallineros_fk">
+            <End Role="gallineros" EntitySet="gallineros" />
+            <End Role="detproducciongallineros" EntitySet="detproducciongallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detproducciongallineros_produccion_fk" Association="DB_A3F19C_gallinerosModel.detproducciongallineros_produccion_fk">
+            <End Role="produccion" EntitySet="produccion" />
+            <End Role="detproducciongallineros" EntitySet="detproducciongallineros" />
+          </AssociationSet>
+          <AssociationSet Name="granjeros_granjas_fk" Association="DB_A3F19C_gallinerosModel.granjeros_granjas_fk">
+            <End Role="granjas" EntitySet="granjas" />
+            <End Role="granjeros" EntitySet="granjeros" />
+          </AssociationSet>
+          <AssociationSet Name="produccion_granjeros_fk" Association="DB_A3F19C_gallinerosModel.produccion_granjeros_fk">
+            <End Role="granjeros" EntitySet="granjeros" />
+            <End Role="produccion" EntitySet="produccion" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_granjeros_fk" Association="DB_A3F19C_gallinerosModel.reporte_granjeros_fk">
+            <End Role="granjeros" EntitySet="granjeros" />
+            <End Role="reporte" EntitySet="reporte" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="DB_A3F19C_gallinerosModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="detgallinasgallineros" EntityType="DB_A3F19C_gallinerosModel.detgallinasgallineros" />
+          <EntitySet Name="detreportegallinas" EntityType="DB_A3F19C_gallinerosModel.detreportegallinas" />
+          <EntitySet Name="gallinas" EntityType="DB_A3F19C_gallinerosModel.gallinas" />
+          <AssociationSet Name="detgallinasgallineros_gallinas_fk" Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallinas_fk">
+            <End Role="gallinas" EntitySet="gallinas" />
+            <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detgallinasgallineros_gallineros_fk" Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallineros_fk">
+            <End Role="gallineros" EntitySet="gallineros" />
+            <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detgallinasgallineros_granjas_fk" Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_granjas_fk">
+            <End Role="granjas" EntitySet="granjas" />
+            <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detgallinasgallineros_statusgallina_fk" Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_statusgallina_fk">
+            <End Role="statusgallina" EntitySet="statusgallina" />
+            <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
+          </AssociationSet>
+          <AssociationSet Name="detreportegallinas_gallinas_fk" Association="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk">
+            <End Role="gallinas" EntitySet="gallinas" />
+            <End Role="detreportegallinas" EntitySet="detreportegallinas" />
+          </AssociationSet>
+          <AssociationSet Name="detreportegallinas_reporte_fk" Association="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk">
+            <End Role="reporte" EntitySet="reporte" />
+            <End Role="detreportegallinas" EntitySet="detreportegallinas" />
+          </AssociationSet>
+          <AssociationSet Name="detreportegallinas_statusgallina_fk" Association="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk">
+            <End Role="statusgallina" EntitySet="statusgallina" />
+            <End Role="detreportegallinas" EntitySet="detreportegallinas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_gallinerosModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="granjeros" Relationship="DB_A3F19C_gallinerosModel.granjeros_aspnetusers_fk" FromRole="AspNetUsers" ToRole="granjeros" />
+          <NavigationProperty Name="AspNetRoles" Relationship="DB_A3F19C_gallinerosModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="detproducciongallineros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Produccion_Id" Type="Int32" Nullable="false" />
+          <Property Name="Gallineros_Id" Type="Int32" Nullable="false" />
+          <Property Name="cantidadhuevos" Type="Int32" />
+          <NavigationProperty Name="gallineros" Relationship="DB_A3F19C_gallinerosModel.detproducciongallineros_gallineros_fk" FromRole="detproducciongallineros" ToRole="gallineros" />
+          <NavigationProperty Name="produccion" Relationship="DB_A3F19C_gallinerosModel.detproducciongallineros_produccion_fk" FromRole="detproducciongallineros" ToRole="produccion" />
+        </EntityType>
+        <EntityType Name="gallineros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="detproducciongallineros" Relationship="DB_A3F19C_gallinerosModel.detproducciongallineros_gallineros_fk" FromRole="gallineros" ToRole="detproducciongallineros" />
+          <NavigationProperty Name="detgallinasgallineros" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallineros_fk" FromRole="gallineros" ToRole="detgallinasgallineros" />
+        </EntityType>
+        <EntityType Name="granjas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomenclatura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="granjeros" Relationship="DB_A3F19C_gallinerosModel.granjeros_granjas_fk" FromRole="granjas" ToRole="granjeros" />
+          <NavigationProperty Name="detgallinasgallineros" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_granjas_fk" FromRole="granjas" ToRole="detgallinasgallineros" />
+        </EntityType>
+        <EntityType Name="granjeros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Granjas_Id" Type="Int32" Nullable="false" />
+          <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_gallinerosModel.granjeros_aspnetusers_fk" FromRole="granjeros" ToRole="AspNetUsers" />
+          <NavigationProperty Name="granjas" Relationship="DB_A3F19C_gallinerosModel.granjeros_granjas_fk" FromRole="granjeros" ToRole="granjas" />
+          <NavigationProperty Name="produccion" Relationship="DB_A3F19C_gallinerosModel.produccion_granjeros_fk" FromRole="granjeros" ToRole="produccion" />
+          <NavigationProperty Name="reporte" Relationship="DB_A3F19C_gallinerosModel.reporte_granjeros_fk" FromRole="granjeros" ToRole="reporte" />
+        </EntityType>
+        <EntityType Name="produccion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Folio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Granjeros_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="detproducciongallineros" Relationship="DB_A3F19C_gallinerosModel.detproducciongallineros_produccion_fk" FromRole="produccion" ToRole="detproducciongallineros" />
+          <NavigationProperty Name="granjeros" Relationship="DB_A3F19C_gallinerosModel.produccion_granjeros_fk" FromRole="produccion" ToRole="granjeros" />
+        </EntityType>
+        <EntityType Name="reporte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Folio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Granjeros_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="granjeros" Relationship="DB_A3F19C_gallinerosModel.reporte_granjeros_fk" FromRole="reporte" ToRole="granjeros" />
+          <NavigationProperty Name="detreportegallinas" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk" FromRole="reporte" ToRole="detreportegallinas" />
+        </EntityType>
+        <EntityType Name="statusgallina">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="detgallinasgallineros" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_statusgallina_fk" FromRole="statusgallina" ToRole="detgallinasgallineros" />
+          <NavigationProperty Name="detreportegallinas" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk" FromRole="statusgallina" ToRole="detreportegallinas" />
+        </EntityType>
+        <Association Name="granjeros_aspnetusers_fk">
+          <End Type="DB_A3F19C_gallinerosModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.granjeros" Role="granjeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="granjeros">
+              <PropertyRef Name="AspNetUsers_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detproducciongallineros_gallineros_fk">
+          <End Type="DB_A3F19C_gallinerosModel.gallineros" Role="gallineros" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detproducciongallineros" Role="detproducciongallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gallineros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detproducciongallineros">
+              <PropertyRef Name="Gallineros_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detproducciongallineros_produccion_fk">
+          <End Type="DB_A3F19C_gallinerosModel.produccion" Role="produccion" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detproducciongallineros" Role="detproducciongallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produccion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detproducciongallineros">
+              <PropertyRef Name="Produccion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="granjeros_granjas_fk">
+          <End Type="DB_A3F19C_gallinerosModel.granjas" Role="granjas" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.granjeros" Role="granjeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="granjas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="granjeros">
+              <PropertyRef Name="Granjas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="produccion_granjeros_fk">
+          <End Type="DB_A3F19C_gallinerosModel.granjeros" Role="granjeros" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.produccion" Role="produccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="granjeros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produccion">
+              <PropertyRef Name="Granjeros_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_granjeros_fk">
+          <End Type="DB_A3F19C_gallinerosModel.granjeros" Role="granjeros" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.reporte" Role="reporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="granjeros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reporte">
+              <PropertyRef Name="Granjeros_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="DB_A3F19C_gallinerosModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="DB_A3F19C_gallinerosModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityType Name="detgallinasgallineros">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gallinas_Id" Type="Int32" Nullable="false" />
+          <Property Name="Gallineros_Id" Type="Int32" Nullable="false" />
+          <Property Name="Granjas_Id" Type="Int32" Nullable="false" />
+          <Property Name="StatusGallina_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gallinas" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallinas_fk" FromRole="detgallinasgallineros" ToRole="gallinas" />
+          <NavigationProperty Name="gallineros" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallineros_fk" FromRole="detgallinasgallineros" ToRole="gallineros" />
+          <NavigationProperty Name="granjas" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_granjas_fk" FromRole="detgallinasgallineros" ToRole="granjas" />
+          <NavigationProperty Name="statusgallina" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_statusgallina_fk" FromRole="detgallinasgallineros" ToRole="statusgallina" />
+        </EntityType>
+        <EntityType Name="detreportegallinas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gallinas_id" Type="Int32" Nullable="false" />
+          <Property Name="statusgallina_id" Type="Int32" Nullable="false" />
+          <Property Name="reporte_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gallinas" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk" FromRole="detreportegallinas" ToRole="gallinas" />
+          <NavigationProperty Name="reporte" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk" FromRole="detreportegallinas" ToRole="reporte" />
+          <NavigationProperty Name="statusgallina" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk" FromRole="detreportegallinas" ToRole="statusgallina" />
+        </EntityType>
+        <EntityType Name="gallinas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="detgallinasgallineros" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallinas_fk" FromRole="gallinas" ToRole="detgallinasgallineros" />
+          <NavigationProperty Name="detreportegallinas" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk" FromRole="gallinas" ToRole="detreportegallinas" />
+        </EntityType>
+        <Association Name="detgallinasgallineros_gallinas_fk">
+          <End Type="DB_A3F19C_gallinerosModel.gallinas" Role="gallinas" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detgallinasgallineros" Role="detgallinasgallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gallinas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detgallinasgallineros">
+              <PropertyRef Name="Gallinas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detgallinasgallineros_gallineros_fk">
+          <End Type="DB_A3F19C_gallinerosModel.gallineros" Role="gallineros" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detgallinasgallineros" Role="detgallinasgallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gallineros">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detgallinasgallineros">
+              <PropertyRef Name="Gallineros_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detgallinasgallineros_granjas_fk">
+          <End Type="DB_A3F19C_gallinerosModel.granjas" Role="granjas" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detgallinasgallineros" Role="detgallinasgallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="granjas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detgallinasgallineros">
+              <PropertyRef Name="Granjas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detgallinasgallineros_statusgallina_fk">
+          <End Type="DB_A3F19C_gallinerosModel.statusgallina" Role="statusgallina" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detgallinasgallineros" Role="detgallinasgallineros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusgallina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detgallinasgallineros">
+              <PropertyRef Name="StatusGallina_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detreportegallinas_gallinas_fk">
+          <End Type="DB_A3F19C_gallinerosModel.gallinas" Role="gallinas" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detreportegallinas" Role="detreportegallinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gallinas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detreportegallinas">
+              <PropertyRef Name="gallinas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detreportegallinas_reporte_fk">
+          <End Type="DB_A3F19C_gallinerosModel.reporte" Role="reporte" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detreportegallinas" Role="detreportegallinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reporte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detreportegallinas">
+              <PropertyRef Name="reporte_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detreportegallinas_statusgallina_fk">
+          <End Type="DB_A3F19C_gallinerosModel.statusgallina" Role="statusgallina" Multiplicity="1" />
+          <End Type="DB_A3F19C_gallinerosModel.detreportegallinas" Role="detreportegallinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusgallina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detreportegallinas">
+              <PropertyRef Name="statusgallina_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A3F19C_gallinerosModelStoreContainer" CdmEntityContainer="DB_A3F19C_gallinerosEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detproducciongallineros">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.detproducciongallineros">
+              <MappingFragment StoreEntitySet="detproducciongallineros">
+                <ScalarProperty Name="cantidadhuevos" ColumnName="cantidadhuevos" />
+                <ScalarProperty Name="Gallineros_Id" ColumnName="Gallineros_Id" />
+                <ScalarProperty Name="Produccion_Id" ColumnName="Produccion_Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gallineros">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.gallineros">
+              <MappingFragment StoreEntitySet="gallineros">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="granjas">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.granjas">
+              <MappingFragment StoreEntitySet="granjas">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nomenclatura" ColumnName="nomenclatura" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="granjeros">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.granjeros">
+              <MappingFragment StoreEntitySet="granjeros">
+                <ScalarProperty Name="AspNetUsers_Id" ColumnName="AspNetUsers_Id" />
+                <ScalarProperty Name="Granjas_Id" ColumnName="Granjas_Id" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produccion">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.produccion">
+              <MappingFragment StoreEntitySet="produccion">
+                <ScalarProperty Name="Granjeros_Id" ColumnName="Granjeros_Id" />
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reporte">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.reporte">
+              <MappingFragment StoreEntitySet="reporte">
+                <ScalarProperty Name="Granjeros_Id" ColumnName="Granjeros_Id" />
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statusgallina">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.statusgallina">
+              <MappingFragment StoreEntitySet="statusgallina">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DB_A3F19C_gallinerosModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="detgallinasgallineros">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.detgallinasgallineros">
+              <MappingFragment StoreEntitySet="detgallinasgallineros">
+                <ScalarProperty Name="StatusGallina_Id" ColumnName="StatusGallina_Id" />
+                <ScalarProperty Name="Granjas_Id" ColumnName="Granjas_Id" />
+                <ScalarProperty Name="Gallineros_Id" ColumnName="Gallineros_Id" />
+                <ScalarProperty Name="Gallinas_Id" ColumnName="Gallinas_Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detreportegallinas">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.detreportegallinas">
+              <MappingFragment StoreEntitySet="detreportegallinas">
+                <ScalarProperty Name="reporte_id" ColumnName="reporte_id" />
+                <ScalarProperty Name="statusgallina_id" ColumnName="statusgallina_id" />
+                <ScalarProperty Name="gallinas_id" ColumnName="gallinas_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gallinas">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.gallinas">
+              <MappingFragment StoreEntitySet="gallinas">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
