@@ -250,7 +250,6 @@ C:\Users\Ruben Hernandez\Documents\GitHub\gallineros\WebAppGallineros\WebAppGall
 C:\Users\Ruben Hernandez\Documents\GitHub\gallineros\WebAppGallineros\WebAppGallineros\bin\es\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\Ruben Hernandez\Documents\GitHub\gallineros\WebAppGallineros\WebAppGallineros\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Ruben Hernandez\Documents\GitHub\gallineros\WebAppGallineros\WebAppGallineros\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\Ruben Hernandez\Documents\GitHub\gallineros\WebAppGallineros\WebAppGallineros\obj\Debug\WebAppGallineros.csprojAssemblyReference.cache
 C:\Users\Ruben Hernandez\Documents\GitHub\gallineros\WebAppGallineros\WebAppGallineros\obj\Debug\WebAppGallineros.csproj.CoreCompileInputs.cache
 C:\Users\Ruben Hernandez\Documents\GitHub\gallineros\WebAppGallineros\WebAppGallineros\obj\Debug\WebAppGallineros.csproj.CopyComplete
 C:\Users\Ruben Hernandez\Documents\GitHub\gallineros\WebAppGallineros\WebAppGallineros\obj\Debug\WebAppGallineros.dll
