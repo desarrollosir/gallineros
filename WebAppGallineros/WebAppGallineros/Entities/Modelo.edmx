@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="gallinas_id" Type="int" Nullable="false" />
           <Property Name="statusgallina_id" Type="int" Nullable="false" />
           <Property Name="reporte_id" Type="int" Nullable="false" />
@@ -424,7 +424,6 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
           <EntitySet Name="detgallinasgallineros" EntityType="DB_A3F19C_gallinerosModel.detgallinasgallineros" />
-          <EntitySet Name="detreportegallinas" EntityType="DB_A3F19C_gallinerosModel.detreportegallinas" />
           <EntitySet Name="gallinas" EntityType="DB_A3F19C_gallinerosModel.gallinas" />
           <AssociationSet Name="detgallinasgallineros_gallinas_fk" Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallinas_fk">
             <End Role="gallinas" EntitySet="gallinas" />
@@ -442,6 +441,7 @@
             <End Role="statusgallina" EntitySet="statusgallina" />
             <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
           </AssociationSet>
+          <EntitySet Name="detreportegallinas" EntityType="DB_A3F19C_gallinerosModel.detreportegallinas" />
           <AssociationSet Name="detreportegallinas_gallinas_fk" Association="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk">
             <End Role="gallinas" EntitySet="gallinas" />
             <End Role="detreportegallinas" EntitySet="detreportegallinas" />
@@ -454,7 +454,7 @@
             <End Role="statusgallina" EntitySet="statusgallina" />
             <End Role="detreportegallinas" EntitySet="detreportegallinas" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -647,18 +647,6 @@
           <NavigationProperty Name="granjas" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_granjas_fk" FromRole="detgallinasgallineros" ToRole="granjas" />
           <NavigationProperty Name="statusgallina" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_statusgallina_fk" FromRole="detgallinasgallineros" ToRole="statusgallina" />
         </EntityType>
-        <EntityType Name="detreportegallinas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="gallinas_id" Type="Int32" Nullable="false" />
-          <Property Name="statusgallina_id" Type="Int32" Nullable="false" />
-          <Property Name="reporte_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="gallinas" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk" FromRole="detreportegallinas" ToRole="gallinas" />
-          <NavigationProperty Name="reporte" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk" FromRole="detreportegallinas" ToRole="reporte" />
-          <NavigationProperty Name="statusgallina" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk" FromRole="detreportegallinas" ToRole="statusgallina" />
-        </EntityType>
         <EntityType Name="gallinas">
           <Key>
             <PropertyRef Name="id" />
@@ -716,6 +704,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="detreportegallinas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gallinas_id" Type="Int32" Nullable="false" />
+          <Property Name="statusgallina_id" Type="Int32" Nullable="false" />
+          <Property Name="reporte_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gallinas" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk" FromRole="detreportegallinas" ToRole="gallinas" />
+          <NavigationProperty Name="reporte" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk" FromRole="detreportegallinas" ToRole="reporte" />
+          <NavigationProperty Name="statusgallina" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk" FromRole="detreportegallinas" ToRole="statusgallina" />
+        </EntityType>
         <Association Name="detreportegallinas_gallinas_fk">
           <End Type="DB_A3F19C_gallinerosModel.gallinas" Role="gallinas" Multiplicity="1" />
           <End Type="DB_A3F19C_gallinerosModel.detreportegallinas" Role="detreportegallinas" Multiplicity="*" />
@@ -869,20 +869,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="gallinas">
+            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.gallinas">
+              <MappingFragment StoreEntitySet="gallinas">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="detreportegallinas">
             <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.detreportegallinas">
               <MappingFragment StoreEntitySet="detreportegallinas">
                 <ScalarProperty Name="reporte_id" ColumnName="reporte_id" />
                 <ScalarProperty Name="statusgallina_id" ColumnName="statusgallina_id" />
                 <ScalarProperty Name="gallinas_id" ColumnName="gallinas_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="gallinas">
-            <EntityTypeMapping TypeName="DB_A3F19C_gallinerosModel.gallinas">
-              <MappingFragment StoreEntitySet="gallinas">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

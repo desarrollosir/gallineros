@@ -14,7 +14,7 @@ namespace WebAppGallineros.Entities
     
     public partial class detreportegallinas
     {
-        public string id { get; set; }
+        public int id { get; set; }
         public int gallinas_id { get; set; }
         public int statusgallina_id { get; set; }
         public int reporte_id { get; set; }

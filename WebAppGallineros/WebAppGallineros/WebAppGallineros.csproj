@@ -364,11 +364,6 @@
     <Content Include="Views\gallinas\Details.cshtml" />
     <Content Include="Views\gallinas\Edit.cshtml" />
     <Content Include="Views\gallinas\Index.cshtml" />
-    <Content Include="Views\detreportegallinas\Create.cshtml" />
-    <Content Include="Views\detreportegallinas\Delete.cshtml" />
-    <Content Include="Views\detreportegallinas\Details.cshtml" />
-    <Content Include="Views\detreportegallinas\Edit.cshtml" />
-    <Content Include="Views\detreportegallinas\Index.cshtml" />
     <Content Include="Views\detproducciongallineros\Create.cshtml" />
     <Content Include="Views\detproducciongallineros\Delete.cshtml" />
     <Content Include="Views\detproducciongallineros\Details.cshtml" />
@@ -380,6 +375,11 @@
     <Content Include="Views\detgallinasgallineros\Edit.cshtml" />
     <Content Include="Views\detgallinasgallineros\Index.cshtml" />
     <Content Include="Views\reportes\NuevoReporte.cshtml" />
+    <Content Include="Views\detreportegallinas\Create.cshtml" />
+    <Content Include="Views\detreportegallinas\Delete.cshtml" />
+    <Content Include="Views\detreportegallinas\Details.cshtml" />
+    <Content Include="Views\detreportegallinas\Edit.cshtml" />
+    <Content Include="Views\detreportegallinas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

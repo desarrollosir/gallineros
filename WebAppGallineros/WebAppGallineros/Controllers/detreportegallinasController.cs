@@ -22,7 +22,7 @@ namespace WebAppGallineros.Controllers
         }
 
         // GET: detreportegallinas/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -46,8 +46,8 @@ namespace WebAppGallineros.Controllers
         }
 
         // POST: detreportegallinas/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,gallinas_id,statusgallina_id,reporte_id")] detreportegallinas detreportegallinas)
@@ -66,7 +66,7 @@ namespace WebAppGallineros.Controllers
         }
 
         // GET: detreportegallinas/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -84,8 +84,8 @@ namespace WebAppGallineros.Controllers
         }
 
         // POST: detreportegallinas/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,gallinas_id,statusgallina_id,reporte_id")] detreportegallinas detreportegallinas)
@@ -103,7 +103,7 @@ namespace WebAppGallineros.Controllers
         }
 
         // GET: detreportegallinas/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -120,7 +120,7 @@ namespace WebAppGallineros.Controllers
         // POST: detreportegallinas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             detreportegallinas detreportegallinas = db.detreportegallinas.Find(id);
             db.detreportegallinas.Remove(detreportegallinas);

@@ -39,7 +39,6 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
     <EntitySet Name="detgallinasgallineros" EntityType="DB_A3F19C_gallinerosModel.detgallinasgallineros" />
-    <EntitySet Name="detreportegallinas" EntityType="DB_A3F19C_gallinerosModel.detreportegallinas" />
     <EntitySet Name="gallinas" EntityType="DB_A3F19C_gallinerosModel.gallinas" />
     <AssociationSet Name="detgallinasgallineros_gallinas_fk" Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallinas_fk">
       <End Role="gallinas" EntitySet="gallinas" />
@@ -57,6 +56,7 @@
       <End Role="statusgallina" EntitySet="statusgallina" />
       <End Role="detgallinasgallineros" EntitySet="detgallinasgallineros" />
     </AssociationSet>
+    <EntitySet Name="detreportegallinas" EntityType="DB_A3F19C_gallinerosModel.detreportegallinas" />
     <AssociationSet Name="detreportegallinas_gallinas_fk" Association="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk">
       <End Role="gallinas" EntitySet="gallinas" />
       <End Role="detreportegallinas" EntitySet="detreportegallinas" />
@@ -262,18 +262,6 @@
     <NavigationProperty Name="granjas" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_granjas_fk" FromRole="detgallinasgallineros" ToRole="granjas" />
     <NavigationProperty Name="statusgallina" Relationship="DB_A3F19C_gallinerosModel.detgallinasgallineros_statusgallina_fk" FromRole="detgallinasgallineros" ToRole="statusgallina" />
   </EntityType>
-  <EntityType Name="detreportegallinas">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="gallinas_id" Type="Int32" Nullable="false" />
-    <Property Name="statusgallina_id" Type="Int32" Nullable="false" />
-    <Property Name="reporte_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="gallinas" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk" FromRole="detreportegallinas" ToRole="gallinas" />
-    <NavigationProperty Name="reporte" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk" FromRole="detreportegallinas" ToRole="reporte" />
-    <NavigationProperty Name="statusgallina" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk" FromRole="detreportegallinas" ToRole="statusgallina" />
-  </EntityType>
   <EntityType Name="gallinas">
     <Key>
       <PropertyRef Name="id" />
@@ -331,6 +319,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="detreportegallinas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gallinas_id" Type="Int32" Nullable="false" />
+    <Property Name="statusgallina_id" Type="Int32" Nullable="false" />
+    <Property Name="reporte_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="gallinas" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk" FromRole="detreportegallinas" ToRole="gallinas" />
+    <NavigationProperty Name="reporte" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk" FromRole="detreportegallinas" ToRole="reporte" />
+    <NavigationProperty Name="statusgallina" Relationship="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk" FromRole="detreportegallinas" ToRole="statusgallina" />
+  </EntityType>
   <Association Name="detreportegallinas_gallinas_fk">
     <End Type="DB_A3F19C_gallinerosModel.gallinas" Role="gallinas" Multiplicity="1" />
     <End Type="DB_A3F19C_gallinerosModel.detreportegallinas" Role="detreportegallinas" Multiplicity="*" />

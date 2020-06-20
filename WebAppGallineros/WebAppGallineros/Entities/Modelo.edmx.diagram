@@ -22,16 +22,16 @@
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.reporte_granjeros_fk" />
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.detgallinasgallineros" Width="1.5" PointX="5.375" PointY="0.625" />
-        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.detreportegallinas" Width="1.5" PointX="7.125" PointY="9.25" />
         <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.gallinas" Width="1.5" PointX="7" PointY="6.375" />
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallinas_fk" />
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_gallineros_fk" />
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_granjas_fk" />
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.detgallinasgallineros_statusgallina_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_gallinerosModel.detreportegallinas" Width="1.5" PointX="7.125" PointY="8.75" />
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.detreportegallinas_gallinas_fk" />
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.detreportegallinas_reporte_fk" />
         <AssociationConnector Association="DB_A3F19C_gallinerosModel.detreportegallinas_statusgallina_fk" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

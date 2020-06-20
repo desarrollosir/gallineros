@@ -1,4 +1,4 @@
-﻿    @{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutIn.cshtml";
 }
@@ -80,29 +80,29 @@
         $("#agregarElemento").click(function (e) {
             e.preventDefault();
 
-              if ($.trim($("#gallina").val()) == "" || $.trim($("#idgallina").val()) == "" )  return;
-             
-             var gallina = $("#gallina").val(),
-                ststugallina = $("#ststugallina").val(),                
-                tblGallinas = $("#tblGallinas tbody");    
+            if ($.trim($("#gallina").val()) == "" || $.trim($("#idgallina").val()) == "") return;
+
+            var gallina = $("#gallina").val(),
+                ststugallina = $("#ststugallina").val(),
+                tblGallinas = $("#tblGallinas tbody");
 
 
             var validar = '';
 
             $.each($("#tblGallinas tbody tr"), function () {
                 var gallinaval = $(this).find('td:eq(0)').html();
-                if (gallinaval === gallina) {                    
+                if (gallinaval === gallina) {
                     validar = 'Error';
                 }
             });
 
             if (validar != 'Error') {
                 var gallinaItem = '<tr><td>' + gallina + '</td><td>' + ststugallina + '</td><td><a data-itemId="0" href="#" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a></td></tr>';
-                tblGallinas.append(gallinaItem); 
+                tblGallinas.append(gallinaItem);
             }
             else {
-                alert('Esta gallina ya fue agregada.');                    
-            }          
+                alert('Esta gallina ya fue agregada.');
+            }
 
             $("#gallina").val("");
             $("#gallina").focus();
@@ -154,7 +154,7 @@
                         }
                     });
                 },
-                change: function (event, ui) {  },
+                change: function (event, ui) { },
                 select: function (e, i) {
                     $("#idgallina").val(i.item.val);
                 },
@@ -189,7 +189,7 @@
             });
         });
 
-        
+
         //After Click Save Button Pass All Data View To Controller For Save Database
         function guardarReporte(data) {
             return $.ajax({
@@ -199,10 +199,15 @@
                 url: "/reportes/GuardarReporte",
                 data: data,
                 success: function (result) {
-                    alert('OK');                    
+                    if (result.respuesta) {
+                        window.location = "Index";
+                    }
+                    else {
+                        alert("Ha ocurrido un error al guardar.");
+                    }
                 },
                 error: function () {
-                    alert("Error!")
+                    alert("Error al procesar la solicitud!");
                 }
             });
         }

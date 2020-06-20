@@ -23,7 +23,7 @@ namespace WebAppGallineros.Controllers
             return View(reporte.ToList());
         }
 
-        public ActionResult NuevoReporte() 
+        public ActionResult NuevoReporte()
         {
             return View();
         }
@@ -31,7 +31,7 @@ namespace WebAppGallineros.Controllers
         public ActionResult GuardarReporte(DetalleReporteVM[] detalleReporte)
         {
             var granjero = db.granjeros.Where(x => x.AspNetUsers.Email.Equals(User.Identity.Name)).FirstOrDefault();
-            int produccionxgranja = (db.produccion.Where(x => x.Folio.Contains(granjero.granjas.nomenclatura)).Count() + 1);
+            int produccionxgranja = (db.reporte.Where(x => x.Folio.Contains(granjero.granjas.nomenclatura)).Count() + 1);
 
             reporte reporte = new reporte();
             reporte.Fecha = DateTime.Now;
@@ -43,7 +43,7 @@ namespace WebAppGallineros.Controllers
 
             AgregarDetalleReporte(detalleReporte, reporte.id);
 
-            return View();
+            return Json(new { respuesta = true }, JsonRequestBehavior.AllowGet);
         }
 
         public void AgregarDetalleReporte(DetalleReporteVM[] detalleReporte, int reporteid) 

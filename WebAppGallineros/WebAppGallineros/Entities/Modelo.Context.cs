@@ -35,7 +35,7 @@ namespace WebAppGallineros.Entities
         public virtual DbSet<reporte> reporte { get; set; }
         public virtual DbSet<statusgallina> statusgallina { get; set; }
         public virtual DbSet<detgallinasgallineros> detgallinasgallineros { get; set; }
-        public virtual DbSet<detreportegallinas> detreportegallinas { get; set; }
         public virtual DbSet<gallinas> gallinas { get; set; }
+        public virtual DbSet<detreportegallinas> detreportegallinas { get; set; }
     }
 }

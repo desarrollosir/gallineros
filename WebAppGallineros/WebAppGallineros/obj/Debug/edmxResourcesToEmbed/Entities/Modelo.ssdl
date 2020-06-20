@@ -55,7 +55,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="gallinas_id" Type="int" Nullable="false" />
     <Property Name="statusgallina_id" Type="int" Nullable="false" />
     <Property Name="reporte_id" Type="int" Nullable="false" />
