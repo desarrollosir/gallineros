@@ -13,16 +13,16 @@
             </div>
             <div class="panel-body">
                 <p>
-                    <a href="@Url.Action("NuevaProduccion")" class="btn btn-primary">Crear Nuevo</a>
+                    <a href="@Url.Action("NuevoReporte")" class="btn btn-primary">Crear Nuevo</a>
                 </p>
                 <table class="table table-bordered table-striped" id="table">
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.Fecha)
+                                @Html.DisplayNameFor(model => model.Folio)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Folio)
+                                @Html.DisplayNameFor(model => model.Fecha)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.granjeros.Nombre)
@@ -30,35 +30,30 @@
                             <th></th>
                         </tr>
                     </thead>
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Fecha)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Folio)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.granjeros.Nombre)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                            </td>
-                        </tr>
-                    }
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Folio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha)
+                                </td>                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.granjeros.Nombre)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Detalles", "DetalleReporte", new { reporteid = item.id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>                    
                 </table>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 
 <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 

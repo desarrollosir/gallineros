@@ -19,8 +19,11 @@ namespace WebAppGallineros.Controllers
         // GET: reportes
         public ActionResult Index()
         {
+            var granjero = db.granjeros.Where(x => x.AspNetUsers.Email.Equals(User.Identity.Name)).FirstOrDefault();
             var reporte = db.reporte.Include(r => r.granjeros);
-            return View(reporte.ToList());
+            var lista = reporte.Where(x => x.Folio.Contains(granjero.granjas.nomenclatura)).ToList();
+
+            return View(lista);
         }
 
         public ActionResult NuevoReporte()
@@ -42,6 +45,7 @@ namespace WebAppGallineros.Controllers
             db.SaveChanges();
 
             AgregarDetalleReporte(detalleReporte, reporte.id);
+            ActualizarEstadoGallinas(detalleReporte);
 
             return Json(new { respuesta = true }, JsonRequestBehavior.AllowGet);
         }
@@ -65,6 +69,29 @@ namespace WebAppGallineros.Controllers
             db.SaveChanges();
         }
 
+        public void ActualizarEstadoGallinas(DetalleReporteVM[] detalleReporte) 
+        {
+            var granjero = db.granjeros.Where(x => x.AspNetUsers.Email.Equals(User.Identity.Name)).FirstOrDefault();
+            
+            foreach (var item in detalleReporte)
+            {
+                detgallinasgallineros registroeditar = db.detgallinasgallineros.Where(x => x.Granjas_Id.Equals(granjero.Granjas_Id) && x.gallinas.nombre.Equals(item.gallina)).FirstOrDefault();
+                registroeditar.StatusGallina_Id = db.statusgallina.Where(x => x.descripcion.Contains(item.statusgallina)).FirstOrDefault().id;
+                db.SaveChanges();
+            }
+        }
+
+        public ActionResult DetalleReporte(int reporteid)
+        {
+            List<detreportegallinas> listaReporte = db.detreportegallinas.Where(x => x.reporte_id == reporteid).ToList();
+            reporte reporte = db.reporte.Where(x => x.id == reporteid).FirstOrDefault();
+            ViewBag.Granjero = reporte.granjeros.Nombre + " " + reporte.granjeros.Apellidos;
+            ViewBag.Folio = reporte.Folio;
+            ViewBag.Fecha = reporte.Fecha;
+            ViewBag.Granja = reporte.granjeros.granjas.descripcion;
+            return View(listaReporte);
+        }
+
         [HttpPost]        
         public JsonResult ListaStatusGallinas()
         {
@@ -85,16 +112,16 @@ namespace WebAppGallineros.Controllers
         [HttpPost]
         public JsonResult AutoCompleteGallinas(string prefix)
         {
-            var proveedores = (from proveedor in db.gallinas
-                               where proveedor.nombre.Contains(prefix)
-                               orderby proveedor.nombre ascending
-                               select new
-                               {
-                                   label = proveedor.nombre,
-                                   val = proveedor.nombre
-                               }).ToList();
+            var granjero = db.granjeros.Where(x => x.AspNetUsers.Email.Equals(User.Identity.Name)).FirstOrDefault();
+            var gallinasgranja = (from det in db.detgallinasgallineros
+                                  where det.Granjas_Id == granjero.Granjas_Id && det.StatusGallina_Id == 1 && det.gallinas.nombre.Contains(prefix)
+                                  select new
+                                  {
+                                      label = det.gallinas.nombre,
+                                      val = det.gallinas.nombre
+                                  }).ToList();
 
-            return Json(proveedores);
+            return Json(gallinasgranja);
         }
 
         // GET: reportes/Details/5

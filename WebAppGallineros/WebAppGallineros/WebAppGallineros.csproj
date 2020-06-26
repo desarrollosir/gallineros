@@ -380,6 +380,7 @@
     <Content Include="Views\detreportegallinas\Details.cshtml" />
     <Content Include="Views\detreportegallinas\Edit.cshtml" />
     <Content Include="Views\detreportegallinas\Index.cshtml" />
+    <Content Include="Views\reportes\DetalleReporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
